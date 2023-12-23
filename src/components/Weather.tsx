@@ -19,7 +19,7 @@ const Weather: React.FC = () => {
   const getWeather = async () => {
     try {
       const response = await axios.get<WeatherData>(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=YOUR_API_KEY&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=1b23dd586b036b96e6edcfe17c0c6e8f&units=metric`
       );
       setWeatherData(response.data);
     } catch (error) {
