@@ -29,7 +29,7 @@ const Weather: React.FC = () => {
 
   return (
     <div>
-      <h1>Weather App</h1>
+      <h1>날씨가 궁금해</h1>
       <input
         type="text"
         placeholder="Enter city name"
