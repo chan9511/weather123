@@ -20,6 +20,7 @@ const Weather: React.FC = () => {
     try {
       const response = await axios.get<WeatherData>(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=1b23dd586b036b96e6edcfe17c0c6e8f&units=metric` // api키 설정
+
       );
       setWeatherData(response.data);
     } catch (error) {
@@ -32,11 +33,11 @@ const Weather: React.FC = () => {
       <h1>날씨가 궁금해요</h1>
       <input
         type="text"
-        placeholder="Enter city name"
+        placeholder="도시를 입력해주세요."
         value={city}
         onChange={(e) => setCity(e.target.value)}
       />
-      <button onClick={getWeather}>Get Weather</button>
+      <button onClick={getWeather}>검색</button>
 
       {weatherData && (
         <div>
