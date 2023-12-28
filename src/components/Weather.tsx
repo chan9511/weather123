@@ -46,7 +46,9 @@ const Weather: React.FC = () => {
           <p>Weather: {weatherData.weather[0].description}</p>
         </div>
       )}
+      
     </div>
+    
   );
 };
 
