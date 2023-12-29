@@ -23,6 +23,7 @@ const Weather: React.FC = () => {
       const response = await axios.get<WeatherData>(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=1b23dd586b036b96e6edcfe17c0c6e8f&units=metric` // api키 설정
       );
+      // await로 비동기로 받아옴.
       setWeatherData(response.data);
       console.log("Weather data fetched successfully:", response.data);
     } catch (error) {
