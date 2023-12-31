@@ -51,7 +51,7 @@ const Weather: React.FC = () => {
           <h3>기온 : {weatherData.main.temp.toFixed(1)}° / 습도 : {weatherData.main.humidity}%</h3> 
           {/* 기온 소수점 첫째자리까지 toFixed(1)*/}
           <p>{weatherData.weather[0].main}</p>
-          {/* 영어로 표현된 clouds->흐림 변환 switch case */}
+          {/* 영어로 표현된 clouds->흐림 한국말로 변환 switch case */}
         </div>
       )}
     </div>
