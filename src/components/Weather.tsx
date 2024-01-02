@@ -1,4 +1,3 @@
-// src/components/Weather.tsx
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -35,7 +34,7 @@ const Weather: React.FC = () => {
 
   return (
     <div>
-      <h1>날씨가 궁금해요</h1>
+      <h1>현재 날씨</h1>
       <input
         type="text"
         placeholder="도시를 입력해주세요."
