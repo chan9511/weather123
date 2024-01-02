@@ -17,7 +17,6 @@ const Weather: React.FC = () => {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
  
-
   const getWeather = async () => {
     try {
       const response = await axios.get<WeatherData>(
