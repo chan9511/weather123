@@ -7,6 +7,7 @@ const App: React.FC = () => {
   return (
     <div className='container'>
       <Weather />
+      {/* 컴포넌트 */}
     </div>
   );
 };
