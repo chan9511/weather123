@@ -79,6 +79,8 @@ const Weather: React.FC = () => {
               <li key={index}>
                 {new Date(forecast.dt * 1000).toLocaleDateString()} - 기온: {forecast.main.temp.toFixed(1)}°
               </li>
+              //분할 해야함
+              
             ))}
           </ul>
         </div>
