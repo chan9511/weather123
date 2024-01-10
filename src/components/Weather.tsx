@@ -81,6 +81,7 @@ const Weather: React.FC = () => {
                 {new Date(forecast.dt * 1000).toLocaleDateString()} - 기온: {forecast.main.temp.toFixed(1)}°
               </li>
               //분할 해야함, toLocaleDateString()으로 현지시각으로 변환
+              //console추가
 
             ))}
           </ul>
