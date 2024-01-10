@@ -43,7 +43,8 @@ const Weather: React.FC = () => {
       );
       setForecastData(forecastResponse.data.list);
 
-      console.log("Weather data fetched successfully:", response.data);
+      console.log("날씨 데이터 받기 성공:", response.data);
+      console.log("날씨 예보 받기 성공", forecastResponse.data);
     } catch (error) {
       console.error("Error fetching weather data:", error);
       setWeatherData(null);
@@ -73,14 +74,14 @@ const Weather: React.FC = () => {
 
       {forecastData && (
         <div>
-          <h2>날씨 예보</h2>
+          <h2>일기 예보</h2>
           <ul>
             {forecastData.map((forecast, index) => (
               <li key={index}>
                 {new Date(forecast.dt * 1000).toLocaleDateString()} - 기온: {forecast.main.temp.toFixed(1)}°
               </li>
-              //분할 해야함
-              
+              //분할 해야함, toLocaleDateString()으로 현지시각으로 변환
+
             ))}
           </ul>
         </div>
