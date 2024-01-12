@@ -1,6 +1,7 @@
 // src/components/Weather.tsx
 import React, { useState } from "react";
 import axios from "axios";
+import "../styles/main.css";
 
 interface WeatherData {
   name: string;
@@ -43,8 +44,7 @@ const Weather: React.FC = () => {
       );
       setForecastData(forecastResponse.data.list);
 
-      console.log("날씨 데이터 받기 성공:", response.data);
-      console.log("날씨 예보 받기 성공", forecastResponse.data);
+      console.log("Weather data fetched successfully:", response.data);
     } catch (error) {
       console.error("Error fetching weather data:", error);
       setWeatherData(null);
@@ -52,8 +52,20 @@ const Weather: React.FC = () => {
     }
   };
 
+  // 예보 데이터를 날짜별로 그룹화
+  const groupedForecastData: { [date: string]: ForecastData[] } = {};
+  if (forecastData) {
+    forecastData.forEach((forecast) => {
+      const date = new Date(forecast.dt * 1000).toLocaleDateString();
+      if (!groupedForecastData[date]) {
+        groupedForecastData[date] = [];
+      }
+      groupedForecastData[date].push(forecast);
+    });
+  }
+
   return (
-    <div>
+    <div className="container">
       <h1>날씨가 궁금해요</h1>
       <input
         type="text"
@@ -65,26 +77,40 @@ const Weather: React.FC = () => {
       <button onClick={getWeather}>검색</button>
 
       {weatherData && (
-        <div>
+        <div className="weather-container">
           <h2>{weatherData.name}</h2>
           <h3>기온 : {weatherData.main.temp.toFixed(1)}° / 습도 : {weatherData.main.humidity}%</h3>
           <p>{weatherData.weather[0].main}</p>
         </div>
       )}
 
-      {forecastData && (
-        <div>
-          <h2>일기 예보</h2>
-          <ul>
-            {forecastData.map((forecast, index) => (
-              <li key={index}>
-                {new Date(forecast.dt * 1000).toLocaleDateString()} - 기온: {forecast.main.temp.toFixed(1)}°
-              </li>
-              //분할 해야함, toLocaleDateString()으로 현지시각으로 변환
-              //console추가
 
-            ))}
-          </ul>
+      {groupedForecastData && (
+        <div className="forecast-container">
+          
+          {Object.keys(groupedForecastData).map((date) => (
+            <div key={date}>
+              <h3>{date}</h3>
+              <ul className="forecast-list">
+                {groupedForecastData[date].map((forecast, index) => (
+                  <li key={index} className="forecast-item">
+                    
+                    <h4>
+            {new Date(forecast.dt * 1000).toLocaleTimeString([], {
+              hour: "numeric",
+              minute: "2-digit",
+              hour12: true,
+            })}
+          </h4>
+          <p>기온: {forecast.main.temp.toFixed(1)}°</p>
+          <p>습도: {forecast.main.humidity}%</p>
+          <p>{forecast.weather[0].main}</p>
+                    
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       )}
     </div>
