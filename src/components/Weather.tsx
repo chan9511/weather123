@@ -80,7 +80,7 @@ const Weather: React.FC = () => {
         <div className="weather-container">
           <h2>{weatherData.name}</h2>
           <h3>기온 : {weatherData.main.temp.toFixed(1)}° / 습도 : {weatherData.main.humidity}%</h3>
-          <p>{weatherData.weather[0].main}</p>
+          <p>날씨 : {weatherData.weather[0].main}</p>
         </div>
       )}
 
@@ -100,6 +100,7 @@ const Weather: React.FC = () => {
               hour: "numeric",
               minute: "2-digit",
               hour12: true,
+              // 
             })}
           </h4>
           <p>기온: {forecast.main.temp.toFixed(1)}°</p>
@@ -118,3 +119,8 @@ const Weather: React.FC = () => {
 };
 
 export default Weather;
+
+// 내일은 ~ 날씨가 이어져요
+// 내일 아침 최저온도는 오늘보다 ~도 낮아요
+// 일출.일몰.
+// 미세먼지 / 초미세 / 자외선지수 / 습도 / 바람 
