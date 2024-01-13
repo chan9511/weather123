@@ -120,6 +120,7 @@ const Weather: React.FC = () => {
 
 export default Weather;
 
+// 아이디어 추가
 // 내일은 ~ 날씨가 이어져요
 // 내일 아침 최저온도는 오늘보다 ~도 낮아요
 // 일출.일몰.
