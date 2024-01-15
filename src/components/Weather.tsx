@@ -90,6 +90,7 @@ const Weather: React.FC = () => {
           {Object.keys(groupedForecastData).map((date) => (
             <div key={date}>
               <div className="date-item">{date}</div>
+              <div className="date-item">평균기온</div>
               <div className="forecast-list">
                 {groupedForecastData[date].map((forecast, index) => (
                   <div key={index} className="forecast-item">
@@ -99,7 +100,6 @@ const Weather: React.FC = () => {
               hour: "numeric",
               minute: "2-digit",
               hour12: true,
-              // 
             })}
           </div>
           <div>기온: {forecast.main.temp.toFixed(1)}°</div>
