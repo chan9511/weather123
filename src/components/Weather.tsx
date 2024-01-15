@@ -90,10 +90,10 @@ const Weather: React.FC = () => {
           
           {Object.keys(groupedForecastData).map((date) => (
             <div key={date}>
-              <h3>{date}</h3>
-              <ul className="forecast-list">
+              <div className="date-item">{date}</div>
+              <div className="forecast-list">
                 {groupedForecastData[date].map((forecast, index) => (
-                  <li key={index} className="forecast-item">
+                  <div key={index} className="forecast-item">
                     
                     <h4>
             {new Date(forecast.dt * 1000).toLocaleTimeString([], {
@@ -107,9 +107,9 @@ const Weather: React.FC = () => {
           <p>습도: {forecast.main.humidity}%</p>
           <p>{forecast.weather[0].main}</p>
                     
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>
