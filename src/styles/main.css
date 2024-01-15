@@ -30,3 +30,10 @@ input {
 .date-item {
   margin-bottom: 20px;
 }
+
+.main-name {
+  font-size: 40px;
+  margin-bottom: 20px;
+  font-weight: bold;
+
+}

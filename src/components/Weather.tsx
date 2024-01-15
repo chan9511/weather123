@@ -1,4 +1,3 @@
-// src/components/Weather.tsx
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/main.css";
@@ -66,7 +65,7 @@ const Weather: React.FC = () => {
 
   return (
     <div className="container">
-      <h1>날씨가 궁금해요</h1>
+      <div className="main-name">웨더웨더</div>
       <input
         type="text"
         placeholder="도시를 입력해주세요."
@@ -78,9 +77,9 @@ const Weather: React.FC = () => {
 
       {weatherData && (
         <div className="weather-container">
-          <h2>{weatherData.name}</h2>
-          <h3>기온 : {weatherData.main.temp.toFixed(1)}° / 습도 : {weatherData.main.humidity}%</h3>
-          <p>날씨 : {weatherData.weather[0].main}</p>
+          <div>{weatherData.name}</div>
+          <div>기온 : {weatherData.main.temp.toFixed(1)}° / 습도 : {weatherData.main.humidity}%</div>
+          <div>날씨 : {weatherData.weather[0].main}</div>
         </div>
       )}
 
@@ -95,17 +94,17 @@ const Weather: React.FC = () => {
                 {groupedForecastData[date].map((forecast, index) => (
                   <div key={index} className="forecast-item">
                     
-                    <h4>
+                    <div>
             {new Date(forecast.dt * 1000).toLocaleTimeString([], {
               hour: "numeric",
               minute: "2-digit",
               hour12: true,
               // 
             })}
-          </h4>
-          <p>기온: {forecast.main.temp.toFixed(1)}°</p>
-          <p>습도: {forecast.main.humidity}%</p>
-          <p>{forecast.weather[0].main}</p>
+          </div>
+          <div>기온: {forecast.main.temp.toFixed(1)}°</div>
+          <div>습도: {forecast.main.humidity}%</div>
+          <div>{forecast.weather[0].main}</div>
                     
                   </div>
                 ))}
