@@ -43,7 +43,8 @@ const Weather: React.FC = () => {
       );
       setForecastData(forecastResponse.data.list);
 
-      console.log("Weather data fetched successfully:", response.data);
+      console.log("불러온 현재시각 데이터:", response.data);
+      console.log("불러온 예보 데이터:", forecastResponse.data.list);
     } catch (error) {
       console.error("Error fetching weather data:", error);
       setWeatherData(null);
@@ -124,3 +125,4 @@ export default Weather;
 // 내일 아침 최저온도는 오늘보다 ~도 낮아요
 // 일출.일몰.
 // 미세먼지 / 초미세 / 자외선지수 / 습도 / 바람 
+// + 지금 일 + 4일까지만 데이터받아서 표현하기
