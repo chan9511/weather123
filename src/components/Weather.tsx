@@ -73,6 +73,7 @@ const Weather: React.FC = () => {
         value={city}
         onChange={(e) => setCity(e.target.value)}
       />
+      
 
       <button onClick={getWeather}>검색</button>
 
@@ -126,3 +127,4 @@ export default Weather;
 // 일출.일몰.
 // 미세먼지 / 초미세 / 자외선지수 / 습도 / 바람 
 // + 지금 일 + 4일까지만 데이터받아서 표현하기
+// + 주간예보
