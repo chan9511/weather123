@@ -25,6 +25,7 @@ const Weather: React.FC = () => {
     dispatch(fetchWeatherData(city));
   };
   
+  
 
   // 예보 데이터를 날짜별로 그룹화
   const groupedForecastData: { [date: string]: ForecastData[] } = {};

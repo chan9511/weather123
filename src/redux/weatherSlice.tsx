@@ -20,7 +20,13 @@ export const fetchWeatherData = createAsyncThunk(
     const response = await axios.get<WeatherData>(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=1b23dd586b036b96e6edcfe17c0c6e8f&units=metric`
     );
+    const forecastResponse = await axios.get<{ list: ForecastData[] }>(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=1b23dd586b036b96e6edcfe17c0c6e8f&units=metric`
+    );
+    setForecastData(forecastResponse.data.list);
     console.log(response.data)
+    console.log(forecastResponse.data.list)
+    
     return response.data;
     
   }
