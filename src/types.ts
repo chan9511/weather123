@@ -24,3 +24,5 @@ interface ForecastData {
 }
 
 export type { WeatherData, ForecastData };
+
+// type만 따로 정리
