@@ -1,5 +1,5 @@
 // Weather.tsx
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCity, fetchWeatherData } from '../redux/weatherSlice';
 import { ForecastData } from '../types';
@@ -8,8 +8,6 @@ import '../styles/main.css';
 import { ThunkAction } from '@reduxjs/toolkit';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
-
-
 
 const Weather: React.FC = () => {
   const dispatch = useDispatch<ThunkDispatch<RootState, any, AnyAction>>();
@@ -21,21 +19,26 @@ const Weather: React.FC = () => {
   const getWeather: ThunkAction<void, RootState, null, AnyAction> = () => {
     dispatch(fetchWeatherData(city));
   };
+
   const handleButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     dispatch(fetchWeatherData(city));
   };
-  
-  
 
-  // 예보 데이터를 날짜별로 그룹화
+  // 예보 데이터를 날짜와 요일별로 그룹화
   const groupedForecastData: { [date: string]: ForecastData[] } = {};
   if (forecastData) {
     forecastData.forEach((forecast) => {
-      const date = new Date(forecast.dt * 1000).toLocaleDateString();
-      if (!groupedForecastData[date]) {
-        groupedForecastData[date] = [];
+      const date = new Date(forecast.dt * 1000);
+      const formattedDate = date.toLocaleDateString([], {
+        weekday: 'short', // 요일 표시
+        month: 'numeric',
+        day: 'numeric',
+      });
+
+      if (!groupedForecastData[formattedDate]) {
+        groupedForecastData[formattedDate] = [];
       }
-      groupedForecastData[date].push(forecast);
+      groupedForecastData[formattedDate].push(forecast);
     });
   }
 
@@ -49,7 +52,7 @@ const Weather: React.FC = () => {
         onChange={(e) => dispatch(setCity(e.target.value))}
       />
 
-<button onClick={handleButtonClick}>검색</button>
+      <button onClick={handleButtonClick}>검색</button>
 
       {weatherData && (
         <div className="weather-container">
@@ -66,7 +69,6 @@ const Weather: React.FC = () => {
           {Object.keys(groupedForecastData).map((date) => (
             <div key={date}>
               <div className="date-item">{date}</div>
-              <div className="date-item">평균기온</div>
               <div className="forecast-list">
                 {groupedForecastData[date].map((forecast, index) => (
                   <div key={index} className="forecast-item">
@@ -92,6 +94,7 @@ const Weather: React.FC = () => {
 };
 
 export default Weather;
+
 
 // 아이디어 추가
 // 내일은 ~ 날씨가 이어져요
