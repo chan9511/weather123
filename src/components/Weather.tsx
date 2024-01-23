@@ -31,8 +31,8 @@ const Weather: React.FC = () => {
       const date = new Date(forecast.dt * 1000);
       const formattedDate = date.toLocaleDateString([], {
         weekday: 'short', // 요일 표시
-        month: 'numeric',
-        day: 'numeric',
+        month: 'numeric', // 월 표시
+        day: 'numeric', //
       });
 
       if (!groupedForecastData[formattedDate]) {
@@ -75,7 +75,6 @@ const Weather: React.FC = () => {
                     <div>
                       {new Date(forecast.dt * 1000).toLocaleTimeString([], {
                         hour: 'numeric',
-                        minute: '2-digit',
                         hour12: true,
                       })}
                     </div>
