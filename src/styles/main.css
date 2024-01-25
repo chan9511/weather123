@@ -2,7 +2,7 @@
 
 .container {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 input {
@@ -27,7 +27,12 @@ input {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
+.forecast-list {
+  text-align: left;
+}
+
 .date-item {
+  text-align: left;
   margin-bottom: 10px;
 }
 
