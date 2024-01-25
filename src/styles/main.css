@@ -37,3 +37,22 @@ input {
   font-weight: bold;
 
 }
+
+@media only screen and (max-width: 900px) {
+  .container {
+
+  }
+
+  .weather-container {
+    
+  }
+
+  .forecast-container {
+    
+  }
+
+  .forecast-item {
+    
+  }
+  
+}
