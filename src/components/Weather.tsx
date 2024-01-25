@@ -28,6 +28,14 @@ const Weather: React.FC = () => {
     dispatch(fetchWeatherData(city));
   };
 
+  const getMinTemperature = (forecasts: ForecastData[]) => {
+    return Math.min(...forecasts.map((forecast) => forecast.main.temp));
+  };
+
+  // 최고 기온을 가져오는 함수
+  const getMaxTemperature = (forecasts: ForecastData[]) => {
+    return Math.max(...forecasts.map((forecast) => forecast.main.temp));
+  };
   // 예보 데이터를 날짜와 요일별로 그룹화
   const groupedForecastData: { [date: string]: ForecastData[] } = {};
   if (forecastData) {
@@ -60,7 +68,16 @@ const Weather: React.FC = () => {
 
       {weatherData && (
         <div className="weather-container">
-          <div>{weatherData.name}</div>
+          <div>
+            {(() => {
+              switch (weatherData.name.toLowerCase()) {
+                case "seoul":
+                  return "서울";
+                default:
+                  return weatherData.name;
+              }
+            })()}
+          </div>
           <div>
             기온 : {weatherData.main.temp.toFixed(1)}° / 습도 :{" "}
             {weatherData.main.humidity}%
@@ -73,7 +90,16 @@ const Weather: React.FC = () => {
         <div className="forecast-container">
           {Object.keys(groupedForecastData).map((date) => (
             <div key={date}>
-              <div className="date-item">{date}</div>
+              <div className="date-item">
+                {date}
+                <div>
+                  최저 기온: {getMinTemperature(groupedForecastData[date])}°
+                </div>
+                <div>
+                  최고 기온: {getMaxTemperature(groupedForecastData[date])}°
+                </div>
+              </div>
+
               <div className="forecast-list">
                 {groupedForecastData[date].map((forecast, index) => (
                   <div key={index} className="forecast-item">
@@ -85,20 +111,8 @@ const Weather: React.FC = () => {
                     </div>
                     <div>기온: {forecast.main.temp.toFixed(1)}°</div>
                     <div>습도: {forecast.main.humidity}%</div>
-                    <div>
-                      {forecast.weather[0].main === "Clouds" && (
-                        <img
-                          src={
-                            require("../weather-icon/free-icon-cloudy-5287586.png")
-                              .default
-                          }
-                          alt="Cloudy Icon"
-                          width="32"
-                          height="32"
-                        />
-                      )}
-                      <div>{forecast.weather[0].main}</div>
-                    </div>
+
+                    <div>{forecast.weather[0].main}</div>
                   </div>
                 ))}
               </div>
