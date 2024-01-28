@@ -20,6 +20,10 @@ input {
   margin-top: 20px;
 }
 
+.minmaxtemp {
+  display: flex;
+}
+
 .forecast-item {
   border: 1px solid #ddd;
   padding: 10px;

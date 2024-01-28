@@ -93,10 +93,8 @@ const Weather: React.FC = () => {
               <div className="date-item">
                 {date}
                 <div>
-                  최저 기온: {getMinTemperature(groupedForecastData[date])}°
-                </div>
-                <div>
-                  최고 기온: {getMaxTemperature(groupedForecastData[date])}°
+                  최저 / 최고 {getMinTemperature(groupedForecastData[date]).toFixed(1)}° /{" "}
+                  {getMaxTemperature(groupedForecastData[date]).toFixed(1)}°
                 </div>
               </div>
 
