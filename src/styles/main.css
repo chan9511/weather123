@@ -36,18 +36,30 @@ input {
 }
 
 .date-item {
-  text-align: left;
   margin-bottom: 10px;
+  justify-content: space-between;
+  display: flex;
+  padding: 5px;
+}
+
+.item-min {
+  color: rgb(45, 61, 150);
+  font-weight:bolder
+}
+
+.item-max {
+  color: rgb(156, 7, 32);
+  font-weight:bolder
 }
 
 .main-name {
   font-size: 40px;
   margin-bottom: 20px;
   font-weight: bold;
-
 }
 
-@media only screen and (max-width: 900px) {
+
+/* @media only screen and (max-width: 900px) {
   .container {
 
   }
@@ -64,4 +76,4 @@ input {
     
   }
   
-}
+} */

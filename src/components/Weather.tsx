@@ -27,12 +27,12 @@ const Weather: React.FC = () => {
   const handleButtonClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     dispatch(fetchWeatherData(city));
   };
-
+  // 최저 기온 함수
   const getMinTemperature = (forecasts: ForecastData[]) => {
     return Math.min(...forecasts.map((forecast) => forecast.main.temp));
   };
 
-  // 최고 기온을 가져오는 함수
+  // 최고 기온 함수
   const getMaxTemperature = (forecasts: ForecastData[]) => {
     return Math.max(...forecasts.map((forecast) => forecast.main.temp));
   };
@@ -44,7 +44,7 @@ const Weather: React.FC = () => {
       const formattedDate = date.toLocaleDateString([], {
         weekday: "short", // 요일 표시
         month: "numeric", // 월 표시
-        day: "numeric", //
+        day: "numeric", // 일 표시
       });
 
       if (!groupedForecastData[formattedDate]) {
@@ -56,7 +56,9 @@ const Weather: React.FC = () => {
 
   return (
     <div className="container">
-      <div className="main-name">웨더웨더</div>
+      <div className="main-name" style={{ color: "green" }}>
+        웨더웨더
+      </div>
       <input
         type="text"
         placeholder="도시를 입력해주세요."
@@ -91,10 +93,14 @@ const Weather: React.FC = () => {
           {Object.keys(groupedForecastData).map((date) => (
             <div key={date}>
               <div className="date-item">
-                {date}
-                <div>
-                  최저 / 최고 {getMinTemperature(groupedForecastData[date]).toFixed(1)}° /{" "}
-                  {getMaxTemperature(groupedForecastData[date]).toFixed(1)}°
+                <div> {date} </div>
+                {/* 최저 최고 기온 반올림 */}
+                <div className="item-min">
+                  {getMinTemperature(groupedForecastData[date]).toFixed(0)}°
+                </div>
+                /
+                <div className="item-max">
+                  {getMaxTemperature(groupedForecastData[date]).toFixed(0)}°
                 </div>
               </div>
 
@@ -131,3 +137,4 @@ export default Weather;
 // 미세먼지 / 초미세 / 자외선지수 / 습도 / 바람
 // + 지금 일 + 4일까지만 데이터받아서 표현하기
 // + 주간예보
+// + 오전/오후 강수확률

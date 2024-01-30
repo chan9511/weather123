@@ -26,3 +26,4 @@ interface ForecastData {
 export type { WeatherData, ForecastData };
 
 // type만 따로 정리
+// 타입 객체의 확장성을 위해서는 interface를 사용하는 것이 더 좋다.
