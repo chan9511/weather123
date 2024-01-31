@@ -53,6 +53,7 @@ const Weather: React.FC = () => {
       groupedForecastData[formattedDate].push(forecast);
     });
   }
+  
 
   return (
     <div className="container">
@@ -84,7 +85,7 @@ const Weather: React.FC = () => {
             기온 : {weatherData.main.temp.toFixed(1)}° / 습도 :{" "}
             {weatherData.main.humidity}%
           </div>
-          <div>날씨 : {weatherData.weather[0].main}</div>
+          <div>날씨 : {weatherData.weather[0].main === 'Clear' ? '맑음' : weatherData.weather[0].main}</div>
         </div>
       )}
 
